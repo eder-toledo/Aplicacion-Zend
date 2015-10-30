@@ -12,7 +12,7 @@
  * @author eder
  */
 
-namespace Catalogos\Entity;
+namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -42,7 +42,7 @@ class Usuario {
     /** @ORM\Column(type="string") */
     protected $pwd;
 
-    /** @ORM\OneToMany(targetEntity="Leido_por", mappedBy="usuarios") */
+    /** @ORM\OneToMany(targetEntity="\Application\Entity\Leido_por", mappedBy="usuarios") */
     protected $usuariosleidos;
     
     /**

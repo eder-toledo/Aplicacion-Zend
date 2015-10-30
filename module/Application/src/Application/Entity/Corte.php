@@ -6,7 +6,7 @@
  * Time: 08:25 PM
  */
 
-namespace Vendedor\Entity;
+namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;

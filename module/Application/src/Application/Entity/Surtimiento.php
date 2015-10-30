@@ -6,7 +6,7 @@
  * Time: 08:38 PM
  */
 
-namespace Almacenista\Entity;
+namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
