@@ -43,23 +43,23 @@ class Usuario {
     protected $pwd;
 
     /** @ORM\OneToMany(targetEntity="\Application\Entity\Leido_por", mappedBy="usuarios") */
-    protected $usuariosleidos;
+    //protected $usuariosleidos;
     
     /**
      * 
      * @ORM\OneToMany(targetEntity="Aviso", mappedBy="usuario")
      */
-    private $avisos;
+    //private $avisos;
     
     /**
      * @ORM\OneToMany(targetEntity="Corte", mappedBy="usuario")
      */
-    private $cortes;
+    //private $cortes;
     
     /**
      * @ORM\OneToMany(targetEntity="Surtimiento", mappedBy="usuario")
      */
-    private $surtimientos;
+    //private $surtimientos;
 
 
     public function __construct() {

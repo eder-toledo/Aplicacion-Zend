@@ -24,10 +24,10 @@ return array(
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
-            'catalogos' => array(
+            'modulo1' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/modulo1',
+                    'route' => '/modulo1[/][:action]',
                     'constraints' => array(
                         'section' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -42,9 +42,10 @@ return array(
             'reporte'=>array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/modulo1/reporte[/][:section]',
+                    'route' => '/modulo1/reporte[/][:action][/][:id]',
                     'constraints' => array(
-                        'section' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
                     ),
                     'defaults' => array(
                         'controller' => 'Catalogos\Controller\Reportes',
@@ -52,12 +53,11 @@ return array(
                     ),
                 ),
             ),
-            'crud'=>array(
+            'catalogo'=>array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/modulo1/reporte[/][:section][/][:action][/][:id]',
+                    'route' => '/modulo1/catalogo[/][:action][/][:id]',
                     'constraints' => array(
-                        'section' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
                     ),
@@ -90,7 +90,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Catalogos\Controller\Index' => Controller\IndexController::class
+            'Catalogos\Controller\Index' => Controller\IndexController::class,
+            'Catalogos\Controller\Crud' => Controller\CrudController::class
         ),
     ),
     'view_manager' => array(
