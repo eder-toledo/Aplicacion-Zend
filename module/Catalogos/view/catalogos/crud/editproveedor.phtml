@@ -1,3 +1,24 @@
-Module: Catalogos
-Controller: Crud
-Action: editproveedor
+<?php
+
+?>
+<form method="post">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input value="<?php echo $proveedor->getNombre(); ?>" name="nombre" type="text" class="form-control" id="nombre" placeholder="Nombre">
+    </div>
+    <div class="form-group">
+        <label for="direccion">Direccion</label>
+        <input value="<?php echo $proveedor->getDireccion(); ?>" name="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion">
+    </div>
+    <div class="form-group">
+        <label for="rfc">Rfc</label>
+        <input value="<?php echo $proveedor->getRfc(); ?>" name="rfc" type="text" class="form-control" id="rfc" placeholder="Grupo">
+    </div>
+    <div class="form-group">
+        <label for="telefono">Telefono</label>
+        <input value="<?php echo $proveedor->getTelefono(); ?>" name="telefono" type="text" class="form-control" id="telefono" placeholder="Telefono">
+    </div>
+    
+    <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+</form>
+<a class="btn btn-info" href="/modulo1/catalogo/allproveedor">Regresar</a>

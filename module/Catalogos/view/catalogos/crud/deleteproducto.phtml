@@ -1,3 +1,10 @@
-Module: Catalogos
-Controller: Crud
-Action: deleteproducto
+<?php
+//$producto=new \Application\Entity\Producto;
+//error_reporting(E_ALL);
+//ini_set('display_errors', '1');
+?>
+<h3>Se va a eliminar el producto: <?php echo $producto->getDescripcion(); ?></h3>
+<form method="post">
+    <input type="submit" value="Eliminar" class="btn btn-danger btn-lg">
+</form>
+<a class="btn btn-info" href="/modulo1/catalogo/allproducto">Regresar</a>

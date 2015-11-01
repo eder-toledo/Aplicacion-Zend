@@ -42,7 +42,7 @@ class Proovedor {
     /**
      * @ORM\OneToMany(targetEntity="Compra", mappedBy="proveedor")
      */
-    private $compras;
+    //private $compras;
     
     public function __construct() {
         $this->compras= new ArrayCollection();

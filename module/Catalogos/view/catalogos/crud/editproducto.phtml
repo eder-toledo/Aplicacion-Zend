@@ -1,3 +1,28 @@
-Module: Catalogos
-Controller: Crud
-Action: editproducto
+<?php
+//$producto=  new \Application\Entity\Producto;
+?>
+<form method="post">
+    <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <input value="<?php echo $producto->getDescripcion(); ?>" name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+    </div>
+    <div class="form-group">
+        <label for="finito">Finito</label>
+        <input value="<?php echo $producto->getFinito(); ?>" name="finito" type="text" class="form-control" id="finito" placeholder="Finito">
+    </div>
+    <div class="form-group">
+        <label for="grupo">Grupo</label>
+        <input value="<?php echo $producto->getId_grupo(); ?>" name="grupo" type="number" class="form-control" id="grupo" placeholder="Grupo">
+    </div>
+    <div class="form-group">
+        <label for="marca">Marca</label>
+        <input value="<?php echo $producto->getMarca(); ?>" name="marca" type="text" class="form-control" id="marca" placeholder="Marca">
+    </div>
+    <div class="form-group">
+        <label for="reorden">Reorden</label>
+        <input value="<?php echo $producto->getPunto_reorden(); ?>" name="reorden" type="text" class="form-control" id="reorden" placeholder="Reorden">
+    </div>
+    
+    <button type="submit" class="btn btn-success btn-lg">Guardar</button>
+</form>
+<a class="btn btn-info" href="/modulo1/catalogo/allproducto">Regresar</a>
