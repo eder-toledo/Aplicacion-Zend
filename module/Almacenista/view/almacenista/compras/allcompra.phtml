@@ -1,0 +1,42 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+?>
+
+<h1>
+    Listado de compras
+    <a href="/modulo2/compra/addcompra" class="btn btn-success">Nueva</a>
+</h1>
+<table class="table table-bordered table-condensed table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Proovedor</th>
+            <th>Fecha</th>
+            <th>Piezas</th>
+            <th>Total pagado</th>
+            <th>Utilidad</th>
+            <th>Precio venta</th>
+            <th>Piezas en almacen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($compras as $c) {
+            ?>
+            <tr>
+                <td><?php echo $c['producto']; ?></td>
+                <td><?php echo $c['provedor']; ?></td>
+                <td><?php echo $c['fecha']; ?></td>
+                <td><?php echo $c['piezas']; ?></td>
+                <td><?php echo $c['totalpagado']; ?></td>
+                <td><?php echo $c['utilidad']; ?></td>
+                <td><?php echo $c['precioventa']; ?></td>
+                <td><?php echo $c['piezas']; ?></td>
+            <tr>
+                <?php
+            }
+            ?>
+    </tbody>
+</table>
+<a href="/modulo2" class="btn btn-info right">Regresar</a>

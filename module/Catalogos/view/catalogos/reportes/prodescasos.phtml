@@ -1,0 +1,37 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+?>
+<h1>
+    Listado de productos escasos
+</h1>
+<table class="table table-bordered table-condensed table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Descripcion</th>
+            <th>Marca</th>
+            <th>Grupo</th>
+            <th>Cantidad</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($productos as $p) {
+            $timestamp = $p->getUfecha();
+            $timestamp= json_encode($timestamp);
+            $timestamp= json_decode($timestamp);
+            ?>
+            <tr>
+                <td><?php echo $p->getDescripcion(); ?></td>
+                <td><?php echo $p->getMarca(); ?></td>
+                <td><?php echo $p->getId_grupo(); ?></td>
+                <td><?php echo $p->getFinito(); ?></td>
+                <td><?php echo $timestamp->date; ?></td>
+            <tr>
+                <?php
+            }
+            ?>
+    </tbody>
+</table>
+<a href="/modulo1" class="btn btn-info right">Regresar</a>

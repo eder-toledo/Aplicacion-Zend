@@ -1,0 +1,36 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+?>
+
+<h1>
+    Listado de compras
+    <a href="/modulo2/surtimiento/addsurtimiento" class="btn btn-success">Nueva</a>
+</h1>
+<table class="table table-bordered table-condensed table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($surtimientos as $s) {
+            ?>
+            <tr>
+                <td><?php echo $s['producto']; ?></td>
+                <td><?php echo $s['usuario']; ?></td>
+                <td><?php echo $s['fecha']; ?></td>
+                <td><?php echo $s['cantidad']; ?></td>
+                <td><?php echo $s['precio']; ?></td>
+            <tr>
+                <?php
+            }
+            ?>
+    </tbody>
+</table>
+<a href="/modulo2" class="btn btn-info right">Regresar</a>

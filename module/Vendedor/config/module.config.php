@@ -29,12 +29,37 @@ return array(
                 'options' => array(
                     'route' => '/modulo3',
                     'constraints' => array(
-                        'section' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Vendedor\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            'ventas'=>array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/modulo3/ventas[/][:action][/][:id]',
+                    'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Vendedor\Controller\Index',
+                        'controller' => 'Vendedor\Controller\Ventas',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            'cortes'=>array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/modulo3/cortes[/][:action][/][:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Vendedor\Controller\Cortes',
                         'action' => 'index',
                     ),
                 ),
@@ -62,7 +87,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Vendedor\Controller\Index' => Controller\IndexController::class
+            'Vendedor\Controller\Index' => Controller\IndexController::class,
+            'Vendedor\Controller\Cortes' => Controller\CortesController::class,
+            'Vendedor\Controller\Ventas' => Controller\VentasController::class
         ),
     ),
     'view_manager' => array(

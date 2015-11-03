@@ -91,7 +91,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Catalogos\Controller\Index' => Controller\IndexController::class,
-            'Catalogos\Controller\Crud' => Controller\CrudController::class
+            'Catalogos\Controller\Crud' => Controller\CrudController::class,
+            'Catalogos\Controller\Reportes' => Controller\ReportesController::class,
         ),
     ),
     'view_manager' => array(

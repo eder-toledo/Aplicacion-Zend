@@ -1,0 +1,46 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+?>
+
+<h1>
+    Listado de cortes
+    <a href="/modulo3/cortes/addcorte" class="btn btn-success">Nuevo</a>
+</h1>
+<table class="table table-bordered table-condensed table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Momento</th>
+            <th>Fecha corte</th>
+            <th>Entradas</th>
+            <th>Quedo</th>
+            <th>Saldo</th>
+            <th>Comentario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($cortes as $c) {
+            $fecha=  json_encode($c['momento']);
+            
+            $fecha1=  json_encode($c['fechacorte']);
+            
+            $fecha2=  json_encode($c['fechacorte2']);
+            
+            ?>
+            <tr>
+                <td><?php echo $c['usuario']; ?></td>
+                <td><?php echo $c['momento']->date; ?></td>
+                <td><?php echo  $c['fechacorte']->date . ' a ' . $c['fechacorte2']->date; ?></td>
+                <td><?php echo $c['entradas']; ?></td>
+                <td><?php echo $c['quedo']; ?></td>
+                <td><?php echo $c['saldo']; ?></td>
+                <td><?php echo $c['comentario']; ?></td>
+            <tr>
+                <?php
+            }
+            ?>
+    </tbody>
+</table>
+<a href="/modulo2" class="btn btn-info right">Regresar</a>

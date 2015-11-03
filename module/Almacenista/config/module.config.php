@@ -20,21 +20,42 @@ return array(
     'router' => array(
         'routes' => array(
             
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
             'almacenista' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/modulo2',
                     'constraints' => array(
-                        'section' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Almacenista\Controller\Index',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            'surtimiento'=>array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/modulo2/surtimiento[/][:action][/][:id]',
+                    'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Almacenista\Controller\Index',
+                        'controller' => 'Almacenista\Controller\Surtimiento',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            'compra'=>array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/modulo2/compra[/][:action][/][:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Almacenista\Controller\Compras',
                         'action' => 'index',
                     ),
                 ),
@@ -62,7 +83,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Almacenista\Controller\Index' => Controller\IndexController::class
+            'Almacenista\Controller\Index' => Controller\IndexController::class,
+            'Almacenista\Controller\Compras' => Controller\ComprasController::class,
+            'Almacenista\Controller\Surtimiento' => Controller\SurtimientoController::class
         ),
     ),
     'view_manager' => array(
