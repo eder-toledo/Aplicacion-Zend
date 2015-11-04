@@ -1,3 +1,48 @@
-Module: Vendedor
-Controller: Ventas
-Action: alldesgloce
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+?>
+
+<h1>
+    Listado de desgloces
+    <a href="/modulo3/ventas/adddesgloce" class="btn btn-success">Nuevo</a>
+</h1>
+<table class="table table-bordered table-condensed table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Corte</th>
+            <th>Producto</th>
+            <th>Venta</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Cantidad</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Importe</th>
+            <th>Confirmado</th>
+            <th>Giro</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($desgloces as $d) {
+            ?>
+            <tr>
+                <td><?php echo $d->getIdCorte(); ?></td>
+                <td><?php echo $d->getIdProducto(); ?></td>
+                <td><?php echo $d->getIdVenta(); ?></td>
+                <td><?php echo $d->getFecha(); ?></td>
+                <td><?php echo $d->getHora(); ?></td>
+                <td><?php echo $d->getCantidad(); ?></td>
+                <td><?php echo $d->getDescripcion(); ?></td>
+                <td><?php echo $d->getPrecio(); ?></td>
+                <td><?php echo $d->getImporte(); ?></td>
+                <td><?php echo $d->getConfirmado(); ?></td>
+                <td><?php echo $d->getGiro(); ?></td>
+            <tr>
+                <?php
+            }
+            ?>
+    </tbody>
+</table>
+<a href="/modulo3" class="btn btn-info right">Regresar</a>

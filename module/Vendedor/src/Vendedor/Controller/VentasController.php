@@ -20,7 +20,8 @@ class VentasController extends AbstractActionController
 
     public function allventaAction()
     {
-        return new ViewModel();
+        $ventas= $this->getObjectManager()->getRepository('Application\Entity\Venta')->findAll();
+        return new ViewModel(array('ventas'=>$ventas));
     }
 
     public function adddesgloceAction()
@@ -30,7 +31,8 @@ class VentasController extends AbstractActionController
 
     public function alldesgloceAction()
     {
-        return new ViewModel();
+        $desgloces=  $this->getObjectManager()->getRepository('Application\Entity\Desgloce')->findAll();
+        return new ViewModel(array('desgloces'=>$desgloces));
     }
 
     public function addavisoAction()
@@ -43,6 +45,12 @@ class VentasController extends AbstractActionController
         return new ViewModel();
     }
 
+    protected function getObjectManager() {
+        if (!$this->_objectManager) {
+            $this->_objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        }
 
+        return $this->_objectManager;
+    }
 }
 
