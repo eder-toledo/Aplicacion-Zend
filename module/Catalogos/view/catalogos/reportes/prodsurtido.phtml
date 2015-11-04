@@ -1,3 +1,18 @@
-Module: Catalogos
-Controller: Reportes
-Action: prodsurtido
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+?>
+
+<h2>Surtimiento de productos</h2>
+<div>
+    <?php
+    foreach($productos as $p){
+        $lista='';
+        echo '<h4>Detalles del producto: ' . $p["producto"] . '</h4>';
+        foreach($p['surtimientos'] as $s){
+            $lista= $lista . '<tr><td>Total: ' . $s['total'] . '</td><td>Fecha: ' . $s['fecha'] . '</td><td>Precio: ' . $s['precio'] . '</td></tr>';
+        }
+        echo 'Surtimientos:<table class="table table-hover">'.$lista.'</table>';
+    }
+    ?>
+</div>
