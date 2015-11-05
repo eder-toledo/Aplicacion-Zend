@@ -7,6 +7,7 @@ use Zend\View\Model\ViewModel;
 use Application\Entity\Surtimiento;
 use Application\Entity\Producto;
 use Application\Entity\Proovedor;
+use Application\Entity\Existencia;
 
 class SurtimientoController extends AbstractActionController
 {
@@ -18,7 +19,25 @@ class SurtimientoController extends AbstractActionController
 
     public function addsurtimientoAction()
     {
-        return new ViewModel();
+        $productos=  $this->getObjectManager()->getRepository('\Application\Entity\Producto')->findAll();
+        $usuarios=  $this->getObjectManager()->getRepository('Application\Entity\Usuario')->findAll();
+        
+        
+        if($this->request->isPost()){
+            $surtimiento= new Surtimiento;
+            $surtimiento->setCuantosSurtido((int)$this->getRequest()->getPost('cuanto'));
+            $surtimiento->setFecha(date('Y-m-d'));
+            $surtimiento->setIdProducto((int)$this->getRequest()->getPost('idproducto'));
+            $surtimiento->setIdUsr((int)$this->getRequest()->getPost('idusuario'));
+            $surtimiento->setPrecioEntra((int)$this->getRequest()->getPost('precio'));
+            
+            $this->getObjectManager()->persist($surtimiento);
+            $this->getObjectManager()->flush();
+
+            return $this->redirect()->toRoute('almacenista');
+        }
+        
+        return new ViewModel(array('productos'=>$productos, 'usuarios'=>$usuarios));
     }
 
     public function allsurtimientoAction()
@@ -48,7 +67,22 @@ class SurtimientoController extends AbstractActionController
 
     public function addexistenciaAction()
     {
-        return new ViewModel();
+        $productos=  $this->getObjectManager()->getRepository('\Application\Entity\Producto')->findAll();
+        $usuarios=  $this->getObjectManager()->getRepository('Application\Entity\Usuario')->findAll();   
+        
+        if($this->request->isPost()){
+            $existencia= new Existencia;
+            $existencia->setIdproducto((int)$this->getRequest()->getPost('idproducto'));
+            $existencia->setMostrador((int)$this->getRequest()->getPost('mostrador'));
+            $existencia->setPrecio((int)$this->getRequest()->getPost('precio'));
+            
+            $this->getObjectManager()->persist($existencia);
+            $this->getObjectManager()->flush();
+
+            return $this->redirect()->toRoute('almacenista');
+        }
+        
+        return new ViewModel(array('productos'=>$productos));
     }
 
     protected function getObjectManager() {

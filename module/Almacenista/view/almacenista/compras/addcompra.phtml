@@ -1,3 +1,45 @@
-Module: Almacenista
-Controller: Compras
-Action: addcompra
+<form method="post" id="miform">
+    <div class="form-group">
+        <label for="idproducto">Producto</label>
+        <select name="idproducto" form="miform" class="form-control" id="idproducto">
+            <?php
+            foreach ($productos as $p) {
+                //$p=new Application\Entity\Producto;
+                echo '<option value="' . $p->getId() . '">' . $p->getDescripcion() . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="idproveedor">Proovedor</label>
+        <select name="idproveedor" form="miform" class="form-control" id="idproveedor">
+            <?php
+            foreach ($proovedores as $pro) {
+                //$pro=new Application\Entity\Proovedor;
+                echo '<option value="' . $pro->getId() . '">' . $pro->getNombre() . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="piezas">Piezas</label>
+        <input name="piezas" type="number" required="" class="form-control" id="piezas" placeholder="Piezas">
+    </div>
+    <div class="form-group">
+        <label for="totalpagado">Total pagado</label>
+        <input name="totalpagado" type="number" required="" class="form-control" id="totalpagado" placeholder="Total pagado">
+    </div>
+    <div class="form-group">
+        <label for="utilidad">Utilidad</label>
+        <input name="utilidad" type="number" required="" class="form-control" id="utilidad" placeholder="Utilidad">
+    </div>
+    <div class="form-group">
+        <label for="precioventa">Precio venta</label>
+        <input name="precioventa" type="number" required="" class="form-control" id="precioventa" placeholder="Precio venta">
+    </div>
+    <div class="form-group">
+        <label for="enalmacen">Piesas en almacen</label>
+        <input name="enalmacen" type="number" required="" class="form-control" id="enalmacen" placeholder="Piezas en almacen">
+    </div>
+    <button class="btn btn-info" type="submit">Guardar</button>
+</form>

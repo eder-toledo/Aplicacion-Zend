@@ -15,7 +15,25 @@ class ComprasController extends AbstractActionController {
     }
 
     public function addcompraAction() {
-        return new ViewModel();
+        $productos=  $this->getObjectManager()->getRepository('\Application\Entity\Producto')->findAll();
+        $proovedores=  $this->getObjectManager()->getRepository('Application\Entity\Proovedor')->findAll();
+        if($this->request->isPost()){
+            $compra= new Compra;
+            $compra->setFecha(date('Y-m-d'));
+            $compra->setIdProducto((int)$this->getRequest()->getPost('idproducto'));
+            $compra->setIdProveedor((int)$this->getRequest()->getPost('idproveedor'));
+            $compra->setPiezas((int)$this->getRequest()->getPost('piezas'));
+            $compra->setPiezasEnAlmacen((int)$this->getRequest()->getPost('enalmacen'));
+            $compra->setPrecioVenta((int)$this->getRequest()->getPost('precioventa'));
+            $compra->setProcentajeUtilidad((int)$this->getRequest()->getPost('utilidad'));
+            $compra->setTotalPagado((int)$this->getRequest()->getPost('totalpagado'));
+            
+            $this->getObjectManager()->persist($compra);
+            $this->getObjectManager()->flush();
+
+            return $this->redirect()->toRoute('almacenista');
+        }
+        return new ViewModel(array('productos'=>$productos, 'proovedores'=>$proovedores));
     }
 
     public function allcompraAction() {

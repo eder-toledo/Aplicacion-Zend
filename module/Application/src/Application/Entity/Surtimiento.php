@@ -38,13 +38,13 @@ class Surtimiento {
      * @ORM\ManyToOne(targetEntity="Producto", inversedBy="surtimientos")
      * @ORM\JoinColumn(name="id_producto", referencedColumnName="id_producto")
      */
-    private $producto;
+    //private $producto;
     
     /**
      * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="surtimientos")
      * @ORM\JoinColumn(name="id_usr", referencedColumnName="id_usr")
      */
-    private $usuario;
+    //private $usuario;
 
     /**
      * @return mixed

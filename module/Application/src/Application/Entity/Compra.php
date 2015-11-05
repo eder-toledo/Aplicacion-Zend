@@ -47,13 +47,13 @@ class Compra {
      * @ORM\ManyToOne(targetEntity="Producto", inversedBy="compras")
      * @ORM\JoinColumn(name="id_producto", referencedColumnName="id_producto")
      */
-    private $producto;
+    //private $producto;
     
     /**
      * @ORM\ManyToOne(targetEntity="Proovedor", inversedBy="compras")
      * @ORM\JoinColumn(name="id_proveedor", referencedColumnName="id_proveedor")
      */
-    private $proveedor;
+    //private $proveedor;
 
     /**
      * @return mixed
