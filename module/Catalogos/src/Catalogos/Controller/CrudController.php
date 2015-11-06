@@ -4,8 +4,6 @@ namespace Catalogos\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Entity\Usuario;
-use Application\Entity\Producto;
-use Application\Entity\Proovedor;
 
 class CrudController extends AbstractActionController {
 
@@ -67,15 +65,14 @@ class CrudController extends AbstractActionController {
 
     public function addproveedorAction() {
         if ($this->request->isPost()) {
-            $proveedor = new Proveedor();
-            $proveedor->setNombre($this->request()->getPost('nombre'));
-            $proveedor->setDireccion($this->request()->getPost('direccion'));
-            $proveedor->setRfc($this->request()->getPost('rfc'));
-            $proveedor->setTelefono($this->request()->getPost('telefono'));
+            $proveedor = new \Application\Entity\Proovedor;
+            $proveedor->setNombre($this->getRequest()->getPost('nombre'));
+            $proveedor->setDireccion($this->getRequest()->getPost('direccion'));
+            $proveedor->setRfc($this->getRequest()->getPost('rfc'));
+            $proveedor->setTelefono($this->getRequest()->getPost('telefono'));
 
             $this->getObjectManager()->persist($proveedor);
             $this->getObjectManager()->flush();
-            $newId = $proveedor->getId();
 
             return $this->redirect()->toRoute('modulo1');
         }
@@ -117,13 +114,14 @@ class CrudController extends AbstractActionController {
 
     public function addproductoAction() {
         if ($this->request->isPost()) {
-            $producto = new Producto();
+            $producto = new \Application\Entity\Producto;
             $producto->setDescripcion($this->getRequest()->getPost('descripcion'));
             $producto->setFinito($this->getRequest()->getPost('finito'));
             $producto->setId_grupo($this->getRequest()->getPost('grupo'));
             $producto->setMarca($this->getRequest()->getPost('marca'));
             $producto->setPunto_reorden($this->getRequest()->getPost('reorden'));
-            $producto->setUfecha(date('Y-m-d H:m:s'));
+            $fecha =new \DateTime(date('Y-m-d H:m:s'));
+            $producto->setUfecha($fecha);
 
             $this->getObjectManager()->persist($producto);
             $this->getObjectManager()->flush();

@@ -15,6 +15,23 @@ class CortesController extends AbstractActionController
 
     public function addcorteAction()
     {
+        $allventas=  $this->getObjectManager()->getRepository('Application\Entity\Venta')->findAll();
+        
+        foreach($allventas as $v){
+            $v=new \Application\Entity\Venta;
+        }
+        
+        if($this->request->isPost()){
+            $corte= new \Application\Entity\Corte;
+            $corte->setComentario($corte);
+            $corte->setEntradas($corte);
+            $corte->setFechaCorte($corte);
+            $corte->setFechaCorte2($corte);
+            $corte->setIdUsr($corte);
+            $corte->setMomento($corte);
+            $corte->setQuedo($corte);
+            $corte->setSaldo($corte);
+        }
         return new ViewModel();
     }
 

@@ -1,3 +1,43 @@
-Module: Vendedor
-Controller: Ventas
-Action: addventa
+<?php
+
+?>
+<h2>Venta de productos</h2>
+<select id="producto">
+    <?php
+    foreach ($productos as $p) {
+        //$p=new Application\Entity\Producto;
+        echo '<option precio="'.$p['precio'].'" value="'.$p['idproducto'].'">'.$p['descripcion'].'</option>';
+    }
+    ?>
+</select>
+<button class="btn btn-info" onclick="agregarproducto()">Agregar producto</button>
+<form id="miform" method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <label>
+        Pago con:
+    </label><input type="number" required="" name="pago">
+    <button class="btn  btn-success">Finalizar venta</button>
+</form>
+<script>
+    function agregarproducto(){
+        id=$("#producto").val();
+        nombre=$("#producto :selected").text();
+        precio=$("#producto :selected").attr('precio');
+        $("#miform table").append('<tr>\n\
+                            <td><input type="hidden" name="idproducto" value="'+id+'"></input>\n\
+                            <span>'+nombre+'</span></td>\n\
+                            <td><input name="cantidad" type="number"></input></td>\n\
+                            <td><input type="hidden" name="precio" value="'+precio+'"><span>'+precio+'</span></td>\n\
+                        </tr>');
+        $(".btn-info").remove();
+    }
+</script>

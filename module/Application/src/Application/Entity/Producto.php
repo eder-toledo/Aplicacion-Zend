@@ -48,17 +48,17 @@ class Producto {
     /**
      * @ORM\OneToMany(targetEntity="Desgloce", mappedBy="producto")
      */
-    private $desgloces;
+    //private $desgloces;
     
     /**
      * @ORM\OneToMany(targetEntity="Compra", mappedBy="producto")
      */
-    private $compras;
+    //private $compras;
     
     /**
      * @ORM\OneToMany(targetEntity="Surtimiento", mappedBy="producto")
      */
-    private $surtimientos;
+    //private $surtimientos;
     
     public function __construct() {
         $this->desgloces= new ArrayCollection();
@@ -83,7 +83,7 @@ class Producto {
     }
 
     public function setMarca($param) {
-        return $this->marca;
+        return $this->marca=$param;
     }
 
     public function getPunto_reorden() {
